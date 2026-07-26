@@ -406,7 +406,7 @@
     <!-- 列印報告格式 -->
     <div class="hidden print:block mt-8 print-card p-6 rounded-none border-none">
       <h1 class="text-xl font-bold text-center border-b pb-4 mb-4">社會住宅租金評定與進件上限報告</h1>
-      <div class="grid grid-cols-2 gap-4 text-xs leading-loose mb-6">
+      <div class="grid grid-cols-2 gap-4 text-lg leading-loose mb-6">
         <div>
           <p><strong>房屋位置：</strong> <span id="printCityDist">桃園市 桃園區</span></p>
           <p><strong>房屋型態：</strong> <span id="printType">整層住宅</span></p>
@@ -745,12 +745,12 @@
         banner.className = "bg-gradient-to-r from-emerald-500 to-teal-600 rounded-3xl p-6 text-white shadow-xl flex flex-col justify-between relative overflow-hidden transition-all";
         title.innerText = "✅ 符合進件標準 ";
         subtitle.innerText = `開價 NT$ ${userRent.toLocaleString()} 未超過評定上限 (${formatCurrency(cappedLimit)})，可順利進件！`;
-        document.getElementById('printStatus').innerText = "符合進件標準";
+        document.getElementById('printStatus').innerText = "✅ 符合進件標準";
       } else {
         banner.className = "bg-gradient-to-r from-rose-500 to-red-600 rounded-3xl p-6 text-white shadow-xl flex flex-col justify-between relative overflow-hidden transition-all";
         title.innerText = "超過評定進件上限 ⚠️";
         subtitle.innerText = `開價 NT$ ${userRent.toLocaleString()} 已超過評定上限 (${formatCurrency(cappedLimit)})，建議調整租金再行送審。`;
-        document.getElementById('printStatus').innerText = "超過進件上限 (需調降)";
+        document.getElementById('printStatus').innerText = "⚠️ 超過進件上限 (需調降)";
       }
 
       // 更新列印頁面
