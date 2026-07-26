@@ -101,57 +101,57 @@
             </div>
           </div>
 
-          <!-- A2:H17 全動態表格復刻 (修正5組共有部分與車位) -->
+          <!-- 謄本面積輸入表格 -->
           <div class="overflow-x-auto border border-slate-300 rounded-xl shadow-sm">
             <table class="w-full text-xs text-center border-collapse bg-white">
               <thead>
                 <tr class="bg-slate-100 font-bold border-b border-slate-300 text-slate-700">
                   <th colspan="3" class="p-2 text-[10pt] border-r border-slate-300">項目</th>
-                  <th class="p-2 border-r text-[10pt] border-slate-300 w-24">平方公尺<p>(面積)</th>
+                  <th class="p-2 border-r text-[10pt] border-slate-300 w-24">平方公尺<p>(面積)</p></th>
                   <th class="p-2 border-r text-[10pt] border-slate-300 w-20">分母</th>
                   <th class="p-2 border-r text-[10pt] border-slate-300 w-20">分子</th>
-                  <th class="p-2 w-24 bg-emerald-50 text-emerald-900 font-bold border-l border-slate-300">平方公尺<p>(計算)</th>
+                  <th class="p-2 w-24 bg-emerald-50 text-emerald-900 font-bold border-l border-slate-300">平方公尺<p>(計算)</p></th>
                 </tr>
               </thead>
               <tbody class="divide-y divide-slate-200">
                 <!-- 專有部分：主建物 -->
                 <tr>
-                  <td rowspan="6" class="p-2 font-bold bg-slate-50 text-[10pt] border-r border-slate-300 w-16">專有<p>部分</td>
+                  <td rowspan="6" class="p-2 font-bold bg-slate-50 text-[10pt] border-r border-slate-300 w-16">專有<p>部分</p></td>
                   <td colspan="2" class="p-2 font-bold bg-slate-50 text-[10pt] border-r border-slate-300">總面積(主建物)</td>
-                  <td class="p-1 border-r border-slate-300"><input text-[10pt] type="number" id="mainSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
-                  <td class="p-1 border-r border-slate-300"><input text-[10pt] type="number" id="mainDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-1 border-r border-slate-300"><input text-[10pt] type="number" id="mainNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 font-bold bg-emerald-50/50 text-[10pt] text-slate-800 border-l border-slate-300" id="mainRes">0</td>
+                  <td class="p-1 border-r border-slate-300"><input type="number" id="mainSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center text-[10pt] py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
+                  <td class="p-1 border-r border-slate-300"><input type="number" id="mainDen" value="1" oninput="calculateRent()" class="w-full text-center text-[10pt] py-1 border border-slate-300 rounded"></td>
+                  <td class="p-1 border-r border-slate-300"><input type="number" id="mainNum" value="1" oninput="calculateRent()" class="w-full text-center text-[10pt] py-1 border border-slate-300 rounded"></td>
+                  <td class="p-2 font-bold bg-emerald-50/50 text-[10pt] text-slate-800 border-l border-slate-300" id="mainRes">0.00</td>
                 </tr>
                 <!-- 附屬建物 -->
                 <tr>
                   <td rowspan="5" class="p-2 font-bold bg-slate-50 text-[10pt] border-r border-slate-300 w-24">附屬建物</td>
                   <td class="p-1 bg-slate-50 text-[10pt] border-r border-slate-300">陽台</td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="balSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
-                  <td class="p-1 border-r  text-[10pt]border-slate-300"><input type="number" id="balDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-1 border-r  text-[10pt]border-slate-300"><input type="number" id="balNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="balRes">0</td>
+                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="balDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
+                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="balNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
+                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="balRes">0.00</td>
                 </tr>
                 <tr>
                   <td class="p-1 bg-slate-50 border-r text-[10pt] border-slate-300">花台</td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="flowerSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="flowerDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="flowerNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="flowerRes">0</td>
+                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="flowerRes">0.00</td>
                 </tr>
                 <tr>
                   <td class="p-1 bg-slate-50 text-[10pt] border-r border-slate-300">雨遮</td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="rainSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-[10pt] text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="rainDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="rainNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="rainRes">0</td>
+                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="rainRes">0.00</td>
                 </tr>
                 <tr>
                   <td class="p-1 bg-slate-50 text-[10pt] border-r border-slate-300">平台</td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="platSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="platDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="platNum" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="platRes">0</td>
+                  <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="platRes">0.00</td>
                 </tr>
                 <tr>
                   <td class="p-1 bg-slate-50 text-[10pt] border-r border-slate-300">其他</td>
@@ -161,13 +161,13 @@
                   <td class="p-2 text-[10pt] font-bold bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="otherRes">0.00</td>
                 </tr>
 
-                <!-- 共有部分 (1-5組：各自獨立平方公尺輸入) -->
+                <!-- 共有部分 (1-5組) -->
                 <tr>
                   <td rowspan="5" colspan="3" class="p-2 font-bold bg-slate-50 text-[10pt] border-r border-slate-300">共有部分</td>
                   <td class="p-1 text-[10pt] border-r border-slate-300"><input type="number" id="s1SqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
                   <td class="p-1 text-[10pt] border-r border-slate-300"><input type="number" id="s1Den" value="100000" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 text-[10pt] border-r border-slate-300"><input type="number" id="s1Num" value="" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
-                  <td class="p-2 text-[10pt] font-bold bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="s1Res">0</td>
+                  <td class="p-2 text-[10pt] font-bold bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="s1Res">0.00</td>
                 </tr>
                 <tr>
                   <td class="p-1 text-[10pt] border-r border-slate-300"><input type="number" id="s2SqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
@@ -189,32 +189,32 @@
                 </tr>
                 <tr>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="s5SqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
-                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="s5Den" value="" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
+                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="s5Den" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="s5Num" value="" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-2 font-bold text-[10pt] bg-emerald-50/50 text-slate-800 border-l border-slate-300" id="s5Res">0.00</td>
                 </tr>
 
-                <!-- 共有部分(車位) - 可輸入且算出的數值會在總計中扣除 -->
+                <!-- 共有部分(車位) - 扣除項 -->
                 <tr class="bg-rose-50/30">
                   <td colspan="3" class="p-2 text-[10pt] font-bold bg-rose-50/50 text-rose-900 border-r border-slate-300">共有部分(車位) - 扣除項</td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="carSqM" value="" step="0.01" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded font-bold bg-amber-50/30"></td>
-                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="carDen" value="" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
+                  <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="carDen" value="1" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-1 border-r text-[10pt] border-slate-300"><input type="number" id="carNum" value="" oninput="calculateRent()" class="w-full text-center py-1 border border-slate-300 rounded"></td>
                   <td class="p-2 font-bold text-[10pt] text-rose-700 bg-rose-100/50 border-l border-slate-300" id="carRes">0.00</td>
                 </tr>
 
-                <!-- 謄本總計區域 (黃色高亮 - 已自動扣除車位) -->
+                <!-- 謄本總計區域 -->
                 <tr class="bg-amber-100 font-bold text-amber-950">
                   <td colspan="5" rowspan="2" class="p-3 border-r border-slate-300 text-sm">謄本面積(不含車位面積)</td>
                   <td class="p-2 border-r text-[10pt] border-slate-300 bg-yellow-200">平方公尺</td>
-                  <td class="p-2 text-base font-black bg-yellow-300 text-slate-900 border-l border-slate-300" id="totalSqM">0</td>
+                  <td class="p-2 text-base font-black bg-yellow-300 text-slate-900 border-l border-slate-300" id="totalSqM">0.00</td>
                 </tr>
                 <tr class="bg-amber-50 font-bold text-amber-950">
                   <td class="p-2 text-[10pt] border-r border-slate-300 bg-amber-200">坪數</td>
-                  <td class="p-2 text-base font-black bg-amber-300 text-indigo-900 border-l border-slate-300" id="totalPing">0</td>
+                  <td class="p-2 text-base font-black bg-amber-300 text-indigo-900 border-l border-slate-300" id="totalPing">0.00</td>
                 </tr>
 
-                <!-- 建築完成年份與屋齡公式計算列 -->
+                <!-- 建築完成年份與屋齡 -->
                 <tr class="bg-slate-100 font-bold text-slate-800 border-t-2 border-slate-300">
                   <td colspan="3" class="p-2 text-[10pt] border-r border-slate-300">建築完成年份 (民國)</td>
                   <td class="p-1 border-r border-slate-300">
@@ -256,7 +256,7 @@
               </select>
             </div>
 
-            <!-- 屋齡選單 (依建築年份自動對應，亦可手動調整) -->
+            <!-- 屋齡級距 -->
             <div>
               <label class="block text-[12pt] font-bold text-slate-700 mb-1">屋齡級距</label>
               <select id="ageSelect" onchange="calculateRent()" class="w-full text-[10pt] px-2.5 py-2 border border-slate-300 rounded-lg font-semibold bg-white">
@@ -272,7 +272,7 @@
             </div>
           </div>
 
-          <!-- 設備勾選區 (每勾選+500) -->
+          <!-- 設備勾選區 -->
           <div class="pt-3 border-t border-slate-100">
             <label class="block text-[12pt] font-bold text-slate-700 mb-2">
               屋況設備配置（每勾選一項可得 +500 補助，整層上限 +2,000 / 獨套上限 +1,000）
@@ -338,7 +338,6 @@
               <span class="text-s text-emerald-100 font-medium">調整後租金上限</span>
               <p class="text-3xl font-black" id="cappedRentDisplay">NT$ 0</p>
             </div>
-            
           </div>
         </div>
 
@@ -364,7 +363,7 @@
 
             <div class="flex justify-between text-slate-500">
               <span>屋齡調整比率 ：</span>
-              <span class="font-bold text-indigo-600" id="dispAgeRate">+ 7.0%</span>
+              <span class="font-bold text-indigo-600" id="dispAgeRate">+ 0.0%</span>
             </div>
             <div class="flex justify-between text-slate-500">
               <span>區位加成比率 ：</span>
@@ -385,19 +384,20 @@
               <span>設備勾選項目加額：</span>
               <span class="font-bold text-emerald-600" id="equipBonusDisp">+ NT$ 0</span>
             </div>
-          <div class="flex justify-between text-slate-500">
-              <span></span>
-              <span class="font-bold text-white" id="dispAgeDiscount">0</span>
-            </div></div>
+            <div class="flex justify-between text-slate-500">
+              <span>屋齡折數：</span>
+              <span class="font-bold text-slate-800" id="dispAgeDiscount">1.00</span>
+            </div>
+          </div>
         </div>
 
       </main>
     </div>
 
-
     <!-- Footer -->
     <footer class="mt-16 text-center text-xs text-slate-400 border-t border-slate-200 pt-6 no-print">
-      <p>© 新智 (Eli) 制作 最新社宅租金評定試算工具<p> 本評定僅供參考，實際收件上限與評定金額以主管機關及審查單位核定為準。</p>
+      <p>© 新智 (Eli) 制作 最新社宅租金評定試算工具</p>
+      <p class="mt-1">本評定僅供參考，實際收件上限與評定金額以主管機關及審查單位核定為準。</p>
     </footer>
 
     <!-- 列印報告格式 -->
@@ -407,12 +407,12 @@
         <div>
           <p><strong>房屋位置：</strong> <span id="printCityDist">桃園市 桃園區</span></p>
           <p><strong>房屋型態：</strong> <span id="printType">整層住宅</span></p>
-          <p><strong>建物坪數：</strong> <span id="printPing">33.16</span> 坪 (<span id="printSqM">109.62</span> m²)</p>
-          <p><strong>建築完成年份：</strong> 民國 <span id="printBuildYear">86</span> 年 (屋齡 <span id="printAge">29</span> 年)</p>
+          <p><strong>建物坪數：</strong> <span id="printPing">0.00</span> 坪 (<span id="printSqM">0.00</span> m²)</p>
+          <p><strong>建築完成年份：</strong> 民國 <span id="printBuildYear">0</span> 年 (屋齡 <span id="printAge">0</span> 年)</p>
         </div>
         <div>
-          <p><strong>預計每月租金：</strong> NT$ <span id="printRent">26,000</span></p>
-          <p><strong>評定租金上限：</strong> NT$ <span id="printLimit">26,500</span></p>
+          <p><strong>預計每月租金：</strong> NT$ <span id="printRent">0</span></p>
+          <p><strong>評定租金上限：</strong> NT$ <span id="printLimit">0</span></p>
           <p><strong>審核結果：</strong> <span id="printStatus">符合進件標準</span></p>
         </div>
       </div>
@@ -421,137 +421,55 @@
   </div>
 
   <script>
-    // 區域基期租金單價資料庫 (解析自 1150727_最新租金評定表.xlsx)
+    // 區域基期租金單價資料庫
     const RENT_DATABASE = {
       "台北": {
         "整層住宅": {
-          "大安區": 1500,
-          "中山區": 1500,
-          "中正區": 1480,
-          "信義區": 1480,
-          "大同區": 1460,
-          "松山區": 1460,
-          "南港區": 1340,
-          "萬華區": 1340,
-          "士林區": 1300,
-          "內湖區": 1300,
-          "文山區": 1230,
-          "北投區": 1230
+          "大安區": 1500, "中山區": 1500, "中正區": 1480, "信義區": 1480,
+          "大同區": 1460, "松山區": 1460, "南港區": 1340, "萬華區": 1340,
+          "士林區": 1300, "內湖區": 1300, "文山區": 1230, "北投區": 1230
         },
         "獨立套房": {
-          "大安區": 2060,
-          "中山區": 1970,
-          "松山區": 1920,
-          "信義區": 1850,
-          "中正區": 1810,
-          "大同區": 1800,
-          "南港區": 1800,
-          "萬華區": 1800,
-          "士林區": 1700,
-          "內湖區": 1700,
-          "文山區": 1600,
-          "北投區": 1600
+          "大安區": 2060, "中山區": 1970, "松山區": 1920, "信義區": 1850,
+          "中正區": 1810, "大同區": 1800, "南港區": 1800, "萬華區": 1800,
+          "士林區": 1700, "內湖區": 1700, "文山區": 1600, "北投區": 1600
         }
       },
       "新北": {
         "整層住宅": {
-          "三重區": 1200,
-          "永和區": 1050,
-          "板橋區": 1030,
-          "中和區": 1010,
-          "新店區": 920,
-          "新莊區": 910,
-          "蘆洲區": 910,
-          "土城區": 880,
-          "汐止區": 850,
-          "林口區": 800,
-          "泰山區": 800,
-          "五股區": 770,
-          "樹林區": 770,
-          "三峽區": 690,
-          "鶯歌區": 650,
-          "淡水區": 620,
-          "八里區": 560,
-          "深坑區": 550,
-          "金山區": 400,
-          "三芝區": 380,
-          "石門區": 370,
-          "石碇區": 370,
-          "貢寮區": 370,
-          "瑞芳區": 370,
-          "萬里區": 370,
-          "平溪區": 310,
-          "雙溪區": 310,
-          "烏來區": 310,
-          "坪林區": 310
+          "三重區": 1200, "永和區": 1050, "板橋區": 1030, "中和區": 1010,
+          "新店區": 920, "新莊區": 910, "蘆洲區": 910, "土城區": 880,
+          "汐止區": 850, "林口區": 800, "泰山區": 800, "五股區": 770,
+          "樹林區": 770, "三峽區": 690, "鶯歌區": 650, "淡水區": 620,
+          "八里區": 560, "深坑區": 550, "金山區": 400, "三芝區": 380,
+          "石門區": 370, "石碇區": 370, "貢寮區": 370, "瑞芳區": 370,
+          "萬里區": 370, "平溪區": 310, "雙溪區": 310, "烏來區": 310, "坪林區": 310
         },
         "獨立套房": {
-          "三重區": 1510,
-          "永和區": 1490,
-          "板橋區": 1480,
-          "中和區": 1390,
-          "新店區": 1390,
-          "土城區": 1330,
-          "新莊區": 1330,
-          "汐止區": 1170,
-          "蘆洲區": 1170,
-          "林口區": 1110,
-          "泰山區": 1110,
-          "樹林區": 1020,
-          "深坑區": 1000,
-          "三峽區": 960,
-          "五股區": 920,
-          "淡水區": 920,
-          "八里區": 840,
-          "鶯歌區": 750,
-          "金山區": 550,
-          "萬里區": 550,
-          "三芝區": 530,
-          "石門區": 530,
-          "石碇區": 530,
-          "貢寮區": 530,
-          "瑞芳區": 530,
-          "平溪區": 320,
-          "雙溪區": 320,
-          "烏來區": 320,
-          "坪林區": 320
+          "三重區": 1510, "永和區": 1490, "板橋區": 1480, "中和區": 1390,
+          "新店區": 1390, "土城區": 1330, "新莊區": 1330, "汐止區": 1170,
+          "蘆洲區": 1170, "林口區": 1110, "泰山區": 1110, "樹林區": 1020,
+          "深坑區": 1000, "三峽區": 960, "五股區": 920, "淡水區": 920,
+          "八里區": 840, "鶯歌區": 750, "金山區": 550, "萬里區": 550,
+          "三芝區": 530, "石門區": 530, "石碇區": 530, "貢寮區": 530,
+          "瑞芳區": 530, "平溪區": 320, "雙溪區": 320, "烏來區": 320, "坪林區": 320
         }
       },
       "桃園": {
         "整層住宅": {
-          "龜山區": 675,
-          "桃園區": 620,
-          "中壢區": 610,
-          "蘆竹區": 590,
-          "八德區": 580,
-          "大園區": 580,
-          "平鎮區": 570,
-          "觀音區": 555,
-          "楊梅區": 485,
-          "新屋區": 460,
-          "龍潭區": 460,
-          "大溪區": 450,
-          "復興區": 295
+          "龜山區": 675, "桃園區": 620, "中壢區": 610, "蘆竹區": 590,
+          "八德區": 580, "大園區": 580, "平鎮區": 570, "觀音區": 555,
+          "楊梅區": 485, "新屋區": 460, "龍潭區": 460, "大溪區": 450, "復興區": 295
         },
         "獨立套房": {
-          "龜山區": 970,
-          "蘆竹區": 935,
-          "桃園區": 885,
-          "中壢區": 855,
-          "八德區": 830,
-          "大園區": 830,
-          "平鎮區": 715,
-          "觀音區": 715,
-          "楊梅區": 660,
-          "龍潭區": 660,
-          "大溪區": 565,
-          "新屋區": 495,
-          "復興區": 305
+          "龜山區": 970, "蘆竹區": 935, "桃園區": 885, "中壢區": 855,
+          "八德區": 830, "大園區": 830, "平鎮區": 715, "觀音區": 715,
+          "楊梅區": 660, "龍潭區": 660, "大溪區": 565, "新屋區": 495, "復興區": 305
         }
       }
     };
 
-    // 屋齡對應加率 (L10) 與折數 (H16)
+    // 屋齡對應加率與折數
     const AGE_RATES = {
       "0-4":   { "整層住宅": 0.15, "獨立套房": 0.20, "折數": 1.0 },
       "5-9":   { "整層住宅": 0.14, "獨立套房": 0.18, "折數": 1.0 },
@@ -623,21 +541,21 @@
       const platV = getRowValue('platSqM', 'platDen', 'platNum');
       const otherV = getRowValue('otherSqM', 'otherDen', 'otherNum');
 
-      // 共有部分 (1~5組獨立平方公尺計算)
+      // 共有部分
       const s1V = getRowValue('s1SqM', 's1Den', 's1Num');
       const s2V = getRowValue('s2SqM', 's2Den', 's2Num');
       const s3V = getRowValue('s3SqM', 's3Den', 's3Num');
       const s4V = getRowValue('s4SqM', 's4Den', 's4Num');
       const s5V = getRowValue('s5SqM', 's5Den', 's5Num');
 
-      // 共有部分 (車位獨立計算)
+      // 車位扣除項
       const carV = getRowValue('carSqM', 'carDen', 'carNum');
 
       // 更新表格內各列計算出之平方公尺結果
       document.getElementById('mainRes').innerText = mainV.toFixed(2);
       document.getElementById('balRes').innerText = balV.toFixed(2);
       document.getElementById('flowerRes').innerText = flowerV.toFixed(2);
-      document.getElementById('rainRes').innerText = rainRes = rainV.toFixed(2);
+      document.getElementById('rainRes').innerText = rainV.toFixed(2);
       document.getElementById('platRes').innerText = platV.toFixed(2);
       document.getElementById('otherRes').innerText = otherV.toFixed(2);
 
@@ -649,7 +567,7 @@
 
       document.getElementById('carRes').innerText = carV.toFixed(2);
 
-      // 謄本總計 (扣除車位)：專有 + 附屬 + 共有1~5 - 車位
+      // 謄本總計 (扣除車位)
       const rawTotalSqM = mainV + balV + flowerV + rainV + platV + otherV + s1V + s2V + s3V + s4V + s5V;
       const totalSqM = Math.max(0, rawTotalSqM - carV);
       const totalPing = totalSqM * 0.3025;
@@ -658,14 +576,14 @@
       document.getElementById('totalPing').innerText = totalPing.toFixed(2);
       document.getElementById('calcPing').innerText = totalPing.toFixed(2) + " 坪";
 
-      // 2. 屋齡計算：YEAR(TODAY()) - 1911 - 建築完成年份
+      // 2. 屋齡計算
       const currentYear = new Date().getFullYear();
-      const buildYearMinguo = parseFloat(document.getElementById('buildYearInput').value) || (currentYear - 1911 - 0);
-      const calculatedAge = currentYear - 1911 - buildYearMinguo;
+      const buildYearMinguo = parseFloat(document.getElementById('buildYearInput').value) || (currentYear - 1911);
+      const calculatedAge = Math.max(0, currentYear - 1911 - buildYearMinguo);
       
       document.getElementById('calculatedAge').innerText = calculatedAge + " 年";
 
-      // 自動將計算出的屋齡設定至下拉選單 (供使用者對照)
+      // 自動對應屋齡選單
       const ageSelect = document.getElementById('ageSelect');
       if (calculatedAge <= 4) ageSelect.value = "0-4";
       else if (calculatedAge <= 9) ageSelect.value = "5-9";
@@ -676,14 +594,14 @@
       else if (calculatedAge <= 39) ageSelect.value = "30-39";
       else ageSelect.value = "40+";
 
-      // 3. 基期租金單價與市場租金 I21
+      // 3. 基期租金單價與市場租金
       const unitBaseRate = RENT_DATABASE[city][type][dist] || 620;
       document.getElementById('baseRentRate').innerText = formatCurrency(unitBaseRate) + " / 坪";
 
-      const I21 = totalPing * unitBaseRate; // I21 = 坪數 * 單價
+      const I21 = totalPing * unitBaseRate;
       document.getElementById('rawBaseRent').innerText = formatCurrency(I21);
 
-      // 4. 加成參數：L2(區位), L6(裝修), L10(屋齡加率), H16(屋齡折數)
+      // 4. 加成參數
       const L2 = parseFloat(document.getElementById('locationRate').value) || 0;
       const L6 = parseFloat(document.getElementById('decorationRate').value) || 0;
       const ageKey = ageSelect.value;
@@ -695,7 +613,7 @@
       document.getElementById('dispAgeRate').innerText = (L10 >= 0 ? '+' : '') + (L10 * 100).toFixed(1) + '%';
       document.getElementById('dispAgeDiscount').innerText = H16.toFixed(2);
 
-      // 5. 設備勾選加額 (L19 / SUM(M22:M27)) 計算：每勾選一個 +500
+      // 5. 設備勾選加額
       const equipChecks = [
         document.getElementById('equipAirCon').checked,
         document.getElementById('equipFridge').checked,
@@ -707,7 +625,6 @@
       const totalEquipCount = equipChecks.filter(Boolean).length;
       const rawEquipSum = totalEquipCount * 500;
 
-      // IFS 公式求 L19
       const b1Key = city + (type === "整層住宅" ? "整層" : "獨套");
       let L19 = 0;
       if (b1Key === "新北整層" || b1Key === "桃園整層" || b1Key === "台北整層") {
@@ -722,14 +639,11 @@
       const legalLimit = LEGAL_LIMITS[b1Key] || 35000;
       document.getElementById('legalLimitDisp').innerText = formatCurrency(legalLimit);
 
-      // 7. 精準執行 Excel 評定公式：
-      // =MIN(ROUNDDOWN(I21*(1+L10)*(1+L2+L6)*H16+L19,-2), XLOOKUP(B1,F21:F26,G21:G26))
+      // 7. 評定公式計算
       const rawCalculatedRent = I21 * (1 + L10) * (1 + L2 + L6) * H16 + L19;
-      const roundedRent = roundDownToHundred(rawCalculatedRent); // ROUNDDOWN(..., -2)
-      
-      const cappedLimit = Math.min(roundedRent, legalLimit); // MIN(...)
+      const roundedRent = roundDownToHundred(rawCalculatedRent);
+      const cappedLimit = Math.min(roundedRent, legalLimit);
 
-      document.getElementById('marketRentDisplay').innerText = formatCurrency(roundedRent);
       document.getElementById('cappedRentDisplay').innerText = formatCurrency(cappedLimit);
 
       // 8. 判斷房東開價與進件標準
@@ -778,11 +692,19 @@
       document.getElementById('flowerNum').value = 1;
 
       document.getElementById('rainSqM').value = 0;
+      document.getElementById('rainDen').value = 1;
+      document.getElementById('rainNum').value = 1;
+
       document.getElementById('platSqM').value = 0;
+      document.getElementById('platDen').value = 1;
+      document.getElementById('platNum').value = 1;
+
       document.getElementById('otherSqM').value = 0;
+      document.getElementById('otherDen').value = 1;
+      document.getElementById('otherNum').value = 1;
 
       document.getElementById('s1SqM').value = 0;
-      document.getElementById('s1Den').value = 10000;
+      document.getElementById('s1Den').value = 100000;
       document.getElementById('s1Num').value = 0;
 
       document.getElementById('s2SqM').value = 0;
@@ -790,19 +712,19 @@
       document.getElementById('s2Num').value = 0;
 
       document.getElementById('s3SqM').value = 0;
-      document.getElementById('s3Den').value = 1000;
+      document.getElementById('s3Den').value = 10000;
       document.getElementById('s3Num').value = 0;
 
       document.getElementById('s4SqM').value = 0;
-      document.getElementById('s4Den').value = 0;
+      document.getElementById('s4Den').value = 1000;
       document.getElementById('s4Num').value = 0;
 
       document.getElementById('s5SqM').value = 0;
-      document.getElementById('s5Den').value = 0;
+      document.getElementById('s5Den').value = 1;
       document.getElementById('s5Num').value = 0;
 
       document.getElementById('carSqM').value = 0;
-      document.getElementById('carDen').value = 0;
+      document.getElementById('carDen').value = 1;
       document.getElementById('carNum').value = 0;
 
       document.getElementById('buildYearInput').value = 0;
