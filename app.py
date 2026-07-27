@@ -6,11 +6,14 @@ import streamlit as st
 # 頁面配置
 st.set_page_config(page_title="案件撥款查詢站", layout="wide", initial_sidebar_state="expanded")
 
+# 自訂樣式：放大基本資訊字體與優化質感
 st.markdown("""
 <style>
-    .card-title { font-size: 14px; color: #6c757d; font-weight: bold; margin-bottom: 2px; }
-    .card-value { font-size: 24px; font-weight: bold; color: #1e293b; }
-    .notice-box { background-color: #fef2f2; border-left: 4px solid #ef4444; padding: 10px; border-radius: 4px; color: #991b1b; }
+    .info-label { font-size: 20px; font-weight: bold; color: #475569; margin-bottom: 8px; }
+    .info-value { font-size: 22px; font-weight: bold; color: #0f172a; }
+    .info-id { font-size: 22px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 2px 10px; border-radius: 6px; }
+    .info-balance { font-size: 28px; font-weight: bold; color: #16a34a; }
+    .info-date { font-size: 22px; font-weight: bold; color: #0f172a; background-color: #f1f5f9; padding: 2px 10px; border-radius: 6px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -24,18 +27,16 @@ def to_roc_date(val):
     if val_str in ['-', 'nan', 'None', '']:
         return '-'
     
-    # 若含有時間字串（如 2028-10-31 00:00:00），僅保留日期部分
     if ' ' in val_str:
         val_str = val_str.split(' ')[0]
         
-    # 統一分隔符號
     val_str_clean = val_str.replace('.', '/').replace('-', '/')
     parts = val_str_clean.split('/')
     
     if len(parts) == 3:
         try:
             y, m, d = int(parts[0]), int(parts[1]), int(parts[2])
-            if y > 1900:  # 西元年轉換為民國年
+            if y > 1900:
                 y -= 1911
             return f"{y:03d}/{m:02d}/{d:02d}"
         except Exception:
@@ -55,7 +56,6 @@ def load_all_data():
                 if sheet_name in xls.sheet_names:
                     df = pd.read_excel(file_path, sheet_name=sheet_name, header=None)
                     
-                    # 動態剖析表頭位置
                     col_map = {}
                     for c in range(df.shape[1]):
                         header_vals = [str(df.iloc[r, c]) for r in range(min(4, len(df)))]
@@ -73,7 +73,6 @@ def load_all_data():
                         if '修繕費餘額' in header_text and 'repair_balance' not in col_map:
                             col_map['repair_balance'] = c
                         
-                        # 公證費欄位
                         if ('公證費(1)' in header_text or '公證費' in header_text) and 'notary_fee' not in col_map:
                             if '金額' in header_text or '公證費' in header_vals[1] or '公證費' in header_vals[2]:
                                 col_map['notary_fee'] = c
@@ -103,7 +102,6 @@ def load_all_data():
                                 notary_fee = row.iloc[col_map['notary_fee']] if 'notary_fee' in col_map else '-'
                                 notary_date = row.iloc[col_map['notary_date']] if 'notary_date' in col_map else '-'
 
-                                # 處理修繕費撥款歷程
                                 repair_list = []
                                 for c in range(df.shape[1]):
                                     h_vals = [str(df.iloc[r, c]) for r in range(min(4, len(df)))]
@@ -138,7 +136,7 @@ st.sidebar.header("📁 資料庫狀態")
 st.sidebar.success(f"已成功載入 {len(df_records)} 筆案件總資料")
 
 st.subheader("🔍 案件速查看板（對照試算表頂部卡片）")
-search_id = st.text_input("請輸入或貼上「媒合編號」（例如：力群新北B2M30500018）：", value="").strip()
+search_id = st.text_input("請輸入或貼上「媒合編號」（例如：力群新北B2M30500038）：", value="").strip()
 
 if search_id:
     matched_df = df_records[df_records['match_id'].str.contains(search_id, case=False, na=False)]
@@ -152,16 +150,12 @@ if search_id:
         
         with col_left:
             st.info("📋 **基本資訊**")
-            st.markdown(f"**媒 合 編 號**：`{item['match_id']}`")
-            st.markdown(f"**房 東 姓 名**：<span style='font-size:20px; font-weight:bold;'>{item['landlord']}</span>", unsafe_allow_html=True)
-            st.markdown(f"**可 用 餘 額**：<span style='font-size:24px; font-weight:bold; color:#16a34a;'>${item['repair_balance']}</span>", unsafe_allow_html=True)
-            st.markdown(f"**到   期   日**：`{item['end_date']}`")
             
-            st.markdown("""
-            <div class='notice-box'>
-                ⚠️ <b>請款提醒</b>：發票日期超過規定顯示月份【不受理】，請記得儘速申請，逾期不受理！
-            </div>
-            """, unsafe_allow_html=True)
+            # 使用自訂加大 CSS 呈現 4 個關鍵項目
+            st.markdown(f"<div class='info-label'>媒 合 編 號： <span class='info-id'>{item['match_id']}</span></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-label'>房 東 姓 名： <span class='info-value'>{item['landlord']}</span></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-label'>可 用 餘 額： <span class='info-balance'>${item['repair_balance']}</span></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-label'>到   期   日： <span class='info-date'>{item['end_date']}</span></div>", unsafe_allow_html=True)
             
         with col_right:
             st.warning("💸 **修繕/公證費 & 撥款時間**")
