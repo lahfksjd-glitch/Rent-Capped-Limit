@@ -6,14 +6,14 @@ import streamlit as st
 # 頁面配置
 st.set_page_config(page_title="案件撥款查詢站", layout="wide", initial_sidebar_state="expanded")
 
-# 自訂樣式：放大基本資訊字體與優化質感
+# 自訂樣式：為深色模式優化，房東姓名與地址加上白底黑字
 st.markdown("""
 <style>
-    .info-label { font-size: 20px; font-weight: bold; color: #475569; margin-bottom: 8px; }
-    .info-value { font-size: 22px; font-weight: bold; color: #0f172a; }
-    .info-id { font-size: 22px; font-weight: bold; color: #2563eb; background-color: #eff6ff; padding: 2px 10px; border-radius: 6px; }
-    .info-balance { font-size: 28px; font-weight: bold; color: #16a34a; }
-    .info-date { font-size: 22px; font-weight: bold; color: #0f172a; background-color: #f1f5f9; padding: 2px 10px; border-radius: 6px; }
+    .info-label { font-size: 20px; font-weight: bold; color: #94a3b8; margin-bottom: 12px; }
+    .info-value-white { font-size: 22px; font-weight: bold; color: #0f172a; background-color: #ffffff; padding: 4px 12px; border-radius: 6px; display: inline-block; border: 1px solid #cbd5e1; }
+    .info-id { font-size: 22px; font-weight: bold; color: #1d4ed8; background-color: #eff6ff; padding: 4px 12px; border-radius: 6px; display: inline-block; }
+    .info-balance { font-size: 28px; font-weight: bold; color: #16a34a; background-color: #f0fdf4; padding: 2px 12px; border-radius: 6px; display: inline-block; }
+    .info-date { font-size: 22px; font-weight: bold; color: #0f172a; background-color: #ffffff; padding: 4px 12px; border-radius: 6px; display: inline-block; border: 1px solid #cbd5e1; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -66,6 +66,8 @@ def load_all_data():
                         if ('房東姓名' in header_text or '房東' in header_text) and 'landlord' not in col_map:
                             if '代表人' in header_text or '房東姓名(代表人)' in header_text:
                                 col_map['landlord'] = c
+                        if ('房屋座落地址' in header_text or '座落地址' in header_text or '地址' in header_text) and 'address' not in col_map:
+                            col_map['address'] = c
                         if ('租約起日' in header_text or '約起日' in header_text) and 'start_date' not in col_map:
                             col_map['start_date'] = c
                         if ('租約訖日' in header_text or '約訖日' in header_text) and 'end_date' not in col_map:
@@ -95,6 +97,7 @@ def load_all_data():
                                 row = df.iloc[row_idx]
                                 
                                 landlord = row.iloc[col_map['landlord']] if 'landlord' in col_map else '未提供'
+                                address = row.iloc[col_map['address']] if 'address' in col_map else '未提供'
                                 start_date = row.iloc[col_map['start_date']] if 'start_date' in col_map else '-'
                                 end_date = row.iloc[col_map['end_date']] if 'end_date' in col_map else '-'
                                 repair_balance = row.iloc[col_map['repair_balance']] if 'repair_balance' in col_map else '0'
@@ -117,6 +120,7 @@ def load_all_data():
                                     'file_name': os.path.basename(file_path),
                                     'type': sheet_name.strip(),
                                     'landlord': str(landlord) if pd.notna(landlord) else '未提供',
+                                    'address': str(address) if pd.notna(address) else '未提供',
                                     'start_date': to_roc_date(start_date),
                                     'end_date': to_roc_date(end_date),
                                     'repair_balance': str(repair_balance) if pd.notna(repair_balance) else '0',
@@ -144,18 +148,17 @@ if search_id:
     if not matched_df.empty:
         item = matched_df.iloc[0]
         
-        st.caption(f"📍 來源檔案：{item['file_name']}｜類別：{item['type']}")
-        
         col_left, col_right = st.columns([1, 1])
         
         with col_left:
             st.info("📋 **基本資訊**")
             
-            # 使用自訂加大 CSS 呈現 4 個關鍵項目
+            # 使用自訂高對比白底樣式
             st.markdown(f"<div class='info-label'>媒 合 編 號： <span class='info-id'>{item['match_id']}</span></div>", unsafe_allow_html=True)
-            st.markdown(f"<div class='info-label'>房 東 姓 名： <span class='info-value'>{item['landlord']}</span></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-label'>房 東 姓 名： <span class='info-value-white'>{item['landlord']}</span></div>", unsafe_allow_html=True)
             st.markdown(f"<div class='info-label'>可 用 餘 額： <span class='info-balance'>${item['repair_balance']}</span></div>", unsafe_allow_html=True)
             st.markdown(f"<div class='info-label'>到   期   日： <span class='info-date'>{item['end_date']}</span></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='info-label'>房 屋 地 址： <span class='info-value-white'>{item['address']}</span></div>", unsafe_allow_html=True)
             
         with col_right:
             st.warning("💸 **修繕/公證費 & 撥款時間**")
@@ -187,10 +190,10 @@ if search_id:
 st.markdown("---")
 
 st.subheader("📋 案件經費控管總清單")
-search_filter = st.text_input("🔎 清單關鍵字過濾（可輸入房東姓名、編號或檔案名稱）：", key="list_filter")
+search_filter = st.text_input("🔎 清單關鍵字過濾（可輸入房東姓名、編號或房屋地址）：", key="list_filter")
 
-display_df = df_records[['match_id', 'landlord', 'start_date', 'end_date', 'repair_balance', 'type', 'file_name']].copy()
-display_df.columns = ['媒合編號', '房東姓名', '租約起日', '租約訖日', '修繕餘額', '類別', '來源檔案']
+display_df = df_records[['match_id', 'landlord', 'address', 'start_date', 'end_date', 'repair_balance', 'type']].copy()
+display_df.columns = ['媒合編號', '房東姓名', '房屋地址', '租約起日', '租約訖日', '修繕餘額', '類別']
 
 if search_filter:
     mask = display_df.apply(lambda row: row.astype(str).str.contains(search_filter, case=False).any(), axis=1)
